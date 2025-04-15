@@ -51,18 +51,30 @@ function displayAllBooks() {
         const tdPages = document.createElement("td");
         const tdRead = document.createElement("td");
         const tdBookID = document.createElement("td");
+        const buttonContainer = document.createElement("td");
+        const removeButton = document.createElement("button");
 
         tdTitle.textContent = bookArr[i].title;
         tdAuthor.textContent = bookArr[i].author;
         tdPages.textContent = bookArr[i].pages.toString(); //Because pages is a number
         tdRead.textContent = bookArr[i].read;
         tdBookID.textContent = bookArr[i].bookID;
+        removeButton.textContent = "X";
+        newRow.setAttribute("data-book-id", bookArr[i].bookID); //Added unique ID to every row element for DOM manipulation. Use data-attributes
 
         newRow.appendChild(tdTitle);
         newRow.appendChild(tdAuthor);
         newRow.appendChild(tdPages);
         newRow.appendChild(tdRead);
         newRow.appendChild(tdBookID);
+        buttonContainer.appendChild(removeButton);
+        newRow.appendChild(buttonContainer);
+
+        removeButton.addEventListener("click", function() { //Finds HTML DOM element with unique ID and removes it when user presses remove button
+            const removableRow = document.querySelector(`tr[data-book-id="${bookArr[i].bookID}"]`);
+            bookArr.splice(i,1); //Remove book from bookArr
+            removableRow.remove();
+        });
 
         table.appendChild(newRow);
     }
@@ -106,7 +118,12 @@ form.addEventListener("submit", function(event){
     createBookThenAdd(bookData.get("title"), bookData.get("author"), bookData.get("num-pages"), bookData.get("yesOrno"));
     displayAllBooks();
     modal.close();
-
 });
 
+/*
+Add a button that removes the book from the library.
+Using a data-attribute with the unique book id, use that.
+Data attributes are HTML attributes that can be created 
+by putting "data-" and then anything I want after that.
+*/
 

@@ -31,12 +31,19 @@ th {
     padding: 10px;
 }
 
+.remove {
+    width: 50px;
+}
+
 tr, td {
     border: 5px grey solid;
     padding: 10px;
 }
 
-button {
+.cancel-button, 
+.submit-button, 
+.reset-button,
+.new-book {
     padding: 10px;
     margin-bottom: 20px;
 }
