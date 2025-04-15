@@ -12,7 +12,7 @@
     <h1>Library App</h1>
 
     <div class="main-content">
-        <button>New Book</button>
+        <button class="new-book">New Book</button>
         <table>
             <tr>
                 <th>Title</th>
@@ -22,7 +22,7 @@
                 <th>Book ID</th>
             </tr>
         </table>
-        <dialog open>
+        <dialog>
             <form action="" method="">
                 <h4>New Book</h4>
                 <div class="form-content">
@@ -33,22 +33,22 @@
                         <p>Have you read it before?</p>
                     </div>
                     <div class="form-inputs">
-                        <input type="text" id="title">
-                        <input type="text" id="author">
-                        <input type="text" id="num-pages">
+                        <input type="text" id="title" name="title">
+                        <input type="text" id="author" name="author">
+                        <input type="text" id="num-pages" name="num-pages">
                         <div class="radio-buttons">
                             <label for="yes">Yes</label>
-                            <input type="radio" name="yesOrno" id="yes">
+                            <input type="radio" name="yesOrno" id="yes" name="yes" value="yes">
                             <label for="no">No</label>
-                            <input type="radio" name="yesOrno" id="no" checked>
+                            <input type="radio" name="yesOrno" id="no" name="no" value="no" checked>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-option-buttons">
-                    <button>Cancel</button>
-                    <button type="reset">Reset</button>
-                    <button type="submit">Submit</button>
+                    <button type="button" class="cancel-button">Cancel</button>
+                    <button type="reset" class="reset-button">Reset</button>
+                    <button type="submit" class="submit-button">Submit</button>
                 </div>
             </form>
         </dialog>
