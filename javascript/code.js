@@ -11,6 +11,9 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+
+    //Books should have a unique id which we can generate with crypto.randomUUID()
+    this.bookID = crypto.randomUUID();
 }
 
 Book.prototype.info = function () {
@@ -25,8 +28,6 @@ function createBookThenAdd(title, author, pages, read) {
     let tempBook = new Book(title, author, pages, read);
     bookArr.push(tempBook);
 }
-
-//Books should have a unique id which we can generate with crypto.randomUUID()
 
 //A function that loops through book array and displays books in HTML table
 const table = document.querySelector("table");
@@ -44,16 +45,19 @@ function displayAllBooks() {
         const tdAuthor = document.createElement("td");
         const tdPages = document.createElement("td");
         const tdRead = document.createElement("td");
+        const tdBookID = document.createElement("td");
 
         tdTitle.textContent = book.title;
         tdAuthor.textContent = book.author;
         tdPages.textContent = book.pages.toString(); //Because pages is a number
         tdRead.textContent = book.read;
+        tdBookID.textContent = book.bookID;
 
         newRow.appendChild(tdTitle);
         newRow.appendChild(tdAuthor);
         newRow.appendChild(tdPages);
         newRow.appendChild(tdRead);
+        newRow.appendChild(tdBookID);
 
         table.appendChild(newRow);
     }
