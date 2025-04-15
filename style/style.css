@@ -4,6 +4,24 @@
     box-sizing: border-box;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 0fr 1fr;
+    row-gap: 50px;
+    justify-items: center;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -21,4 +39,48 @@ tr, td {
 button {
     padding: 10px;
     margin-bottom: 20px;
+}
+
+dialog {
+    padding: 0;
+}
+
+form {
+    width: 535px;
+    padding: 25px;
+    display: grid; 
+    grid-template-rows: 1fr 2fr 1fr;
+    row-gap: 10px;
+}
+
+form > h4 {
+    align-self: center;
+    justify-self: center;
+    font-size: 3rem;
+}
+
+.form-option-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 40px;
+}
+
+.form-content {
+    display: grid; 
+    grid-template-columns: 2fr 1fr;
+    column-gap: 20px;
+}
+
+.form-labels,
+.form-inputs {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+input[type="text"] {
+    height: 25px;    
+}
+
+.main-content {
+    justify-items: center;
 }

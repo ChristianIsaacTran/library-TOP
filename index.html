@@ -1,25 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
     <h1>Library App</h1>
-    <button>New Book</button>
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Pages</th>
-            <th>Have I read it?</th>
-            <th>Book ID</th>
-        </tr>
-    </table>
-    
+    <div class="main-content">
+        <button>New Book</button>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Have I read it?</th>
+                <th>Book ID</th>
+            </tr>
+        </table>
+        <dialog open>
+            <form action="" method="">
+                <h4>New Book</h4>
+                <div class="form-content">
+                    <div class="form-labels">
+                        <label for="title">Title:</label>
+                        <label for="author">Author:</label>
+                        <label for="num-pages">Number of Pages:</label>
+                        <p>Have you read it before?</p>
+                    </div>
+                    <div class="form-inputs">
+                        <input type="text" id="title">
+                        <input type="text" id="author">
+                        <input type="text" id="num-pages">
+                        <div class="radio-buttons">
+                            <label for="yes">Yes</label>
+                            <input type="radio" name="yesOrno" id="yes">
+                            <label for="no">No</label>
+                            <input type="radio" name="yesOrno" id="no" checked>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-option-buttons">
+                    <button>Cancel</button>
+                    <button type="reset">Reset</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </dialog>
+    </div>
+
+
     <script src="javascript/code.js"></script>
 </body>
+
 </html>

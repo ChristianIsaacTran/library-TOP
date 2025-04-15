@@ -35,7 +35,8 @@ const table = document.querySelector("table");
 function displayAllBooks() {
     //Create tabular data and append it to the newly created table row (tr)
     for (const book of bookArr) {
-        /*Note to self, do NOT confuse for loop "of" and "in". "in" is for 
+        /*
+        Note to self, do NOT confuse for loop "of" and "in". "in" is for 
         iterating through key item pair elements like properties in an object.
         "of" is the main one I should use because it iterates through the objects
         like strings, objects, etc.
