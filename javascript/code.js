@@ -53,19 +53,27 @@ function displayAllBooks() {
         const tdBookID = document.createElement("td");
         const buttonContainer = document.createElement("td");
         const removeButton = document.createElement("button");
+        const readButton = document.createElement("button");
+        const readTextContainer = document.createElement("p");
         let bookID = bookArr[i].bookID;
 
         tdTitle.textContent = bookArr[i].title;
         tdAuthor.textContent = bookArr[i].author;
         tdPages.textContent = bookArr[i].pages.toString(); //Because pages is a number
-        tdRead.textContent = bookArr[i].read;
+        readTextContainer.textContent = bookArr[i].read;
         tdBookID.textContent = bookID;
         removeButton.textContent = "X";
         newRow.setAttribute("data-book-id", bookID); //Added unique ID to every row element for DOM manipulation. Use data-attributes
+        readButton.textContent = "Read Toggle";
+        readButton.setAttribute("class", "read-toggle");
+        readButton.setAttribute("type", "button"); //Or else it will act like a submit button by default and go away
+        tdRead.setAttribute("class", "read-text");
 
         newRow.appendChild(tdTitle);
         newRow.appendChild(tdAuthor);
         newRow.appendChild(tdPages);
+        tdRead.appendChild(readTextContainer);
+        tdRead.appendChild(readButton);
         newRow.appendChild(tdRead);
         newRow.appendChild(tdBookID);
         buttonContainer.appendChild(removeButton);
@@ -76,6 +84,10 @@ function displayAllBooks() {
             removeBookFromArr(bookID);
             removableRow.remove();
             arrCounter -= 1;
+        });
+
+        readButton.addEventListener("click", function() {
+            readTextContainer.textContent = changeArrReadStatus(bookID);
         });
 
         table.appendChild(newRow);
@@ -136,4 +148,30 @@ function removeBookFromArr(givenID) {
             break;
         }
     }
+}
+
+/*
+Add a button on each book's display that changes the read status
+also add a prototype function that toggles the book's read status.
+*/
+
+//Add a prototype function that toggles read status
+Book.prototype.changeReadStatus = function() {
+    if(this.read === "yes"){
+        this.read = "no";
+    }
+    else {
+        this.read = "yes";
+    }
+};
+
+function changeArrReadStatus(givenID) {
+    for(let j = 0; j < bookArr.length; j++) {
+        if(bookArr[j].bookID === givenID){
+            bookArr[j].changeReadStatus();
+            return bookArr[j].read;
+        }
+    }
+
+    return "";
 }

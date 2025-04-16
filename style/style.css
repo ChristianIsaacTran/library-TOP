@@ -91,3 +91,14 @@ input[type="text"] {
 .main-content {
     justify-items: center;
 }
+
+.read-toggle {
+    margin-left: 10px;
+}
+
+.read-text {
+    display: grid; 
+    grid-template-columns: 0.1fr 1fr;
+    column-gap: 5px;
+    border: none;
+}
