@@ -53,14 +53,15 @@ function displayAllBooks() {
         const tdBookID = document.createElement("td");
         const buttonContainer = document.createElement("td");
         const removeButton = document.createElement("button");
+        let bookID = bookArr[i].bookID;
 
         tdTitle.textContent = bookArr[i].title;
         tdAuthor.textContent = bookArr[i].author;
         tdPages.textContent = bookArr[i].pages.toString(); //Because pages is a number
         tdRead.textContent = bookArr[i].read;
-        tdBookID.textContent = bookArr[i].bookID;
+        tdBookID.textContent = bookID;
         removeButton.textContent = "X";
-        newRow.setAttribute("data-book-id", bookArr[i].bookID); //Added unique ID to every row element for DOM manipulation. Use data-attributes
+        newRow.setAttribute("data-book-id", bookID); //Added unique ID to every row element for DOM manipulation. Use data-attributes
 
         newRow.appendChild(tdTitle);
         newRow.appendChild(tdAuthor);
@@ -71,9 +72,10 @@ function displayAllBooks() {
         newRow.appendChild(buttonContainer);
 
         removeButton.addEventListener("click", function() { //Finds HTML DOM element with unique ID and removes it when user presses remove button
-            const removableRow = document.querySelector(`tr[data-book-id="${bookArr[i].bookID}"]`);
-            bookArr.splice(i,1); //Remove book from bookArr
+            const removableRow = document.querySelector(`tr[data-book-id="${bookID}"]`);
+            removeBookFromArr(bookID);
             removableRow.remove();
+            arrCounter -= 1;
         });
 
         table.appendChild(newRow);
@@ -127,3 +129,11 @@ Data attributes are HTML attributes that can be created
 by putting "data-" and then anything I want after that.
 */
 
+function removeBookFromArr(givenID) {
+    for(let j = 0; j < bookArr.length; j++) {
+        if(bookArr[j].bookID === givenID){
+            bookArr.splice(j, 1);
+            break;
+        }
+    }
+}
