@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    --mal-blue: #2e51a2;
+    --mal-bg-color: #e1e7f5;
+    --mal-text-over-blue: white;
+    --mal-text-over-white: black;
+    --table-header-border: #163d99;
+    --table-cell-border: grey;
+}
+
 p,
 h1,
 h2,
@@ -15,11 +24,26 @@ h6 {
     padding: 0;
 }
 
+
 body {
+    font-family: "arial";
     display: grid;
-    grid-template-rows: 0fr 1fr;
-    row-gap: 50px;
-    justify-items: center;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 25px;
+    
+    
+}
+
+.header > h1 {
+    color: var(--mal-text-over-blue);
+    justify-self: center;
+    align-self: center;
+    
+}
+
+.header {
+    display: grid;
+    background-color: var(--mal-blue);
 }
 
 table {
@@ -27,7 +51,9 @@ table {
 }
 
 th {
-    border: 5px black solid;
+    background-color: var(--mal-blue);
+    color: var(--mal-text-over-blue);
+    border: 5px var(--table-header-border) solid;
     padding: 10px;
 }
 
@@ -35,9 +61,21 @@ th {
     width: 50px;
 }
 
+.remove-button {
+    border-radius: 50%;
+    width: auto;
+    height: auto;
+    border: none;
+    background-color: var(--mal-blue);
+    color: var(--mal-text-over-blue);
+}
+
+
+
 tr, td {
-    border: 5px grey solid;
+    border: 5px var(--table-cell-border) solid;
     padding: 10px;
+    background-color: var(--mal-bg-color);
 }
 
 .cancel-button, 
@@ -46,6 +84,17 @@ tr, td {
 .new-book {
     padding: 10px;
     margin-bottom: 20px;
+    background-color: var(--mal-blue);
+    color: var(--mal-text-over-blue);
+    border: none;
+    border-radius: 50px;
+}
+
+.new-book:hover,
+.remove-button:hover,
+.read-toggle:hover {
+    background-color: var(--mal-bg-color);
+    color: var(--mal-text-over-white);
 }
 
 dialog {
@@ -94,6 +143,11 @@ input[type="text"] {
 
 .read-toggle {
     margin-left: 10px;
+    border: none;
+    padding: 0 15px;
+    border-radius: 30px;
+    background-color: var(--mal-blue);
+    color: var(--mal-text-over-blue);
 }
 
 .read-text {

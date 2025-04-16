@@ -68,6 +68,8 @@ function displayAllBooks() {
         readButton.setAttribute("class", "read-toggle");
         readButton.setAttribute("type", "button"); //Or else it will act like a submit button by default and go away
         tdRead.setAttribute("class", "read-text");
+        removeButton.setAttribute("class", "remove-button");
+        
 
         newRow.appendChild(tdTitle);
         newRow.appendChild(tdAuthor);
