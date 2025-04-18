@@ -6,23 +6,43 @@ let arrCounter = 0;
 
 
 //This is an extension from the previous lesson's book constructor exercise
-function Book(title, author, pages, read) {
-    if(!new.target){
-        throw Error("PLEASE USE NEW WHEN USING CONSTRUCTOR");
-    }
+// function Book(title, author, pages, read) {
+//     if(!new.target){
+//         throw Error("PLEASE USE NEW WHEN USING CONSTRUCTOR");
+//     }
     
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
 
-    //Books should have a unique id which we can generate with crypto.randomUUID()
-    this.bookID = crypto.randomUUID();
+//     //Books should have a unique id which we can generate with crypto.randomUUID()
+//     this.bookID = crypto.randomUUID();
+// }
+
+// Book.prototype.info = function () {
+//     return `Title: ${this.title} | Author: ${this.author} | Pages: ${this.pages} | Read before? ${this.read}`;
+// };
+
+
+//Refactored the above constructor to be a class instead.
+class Book {
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages; 
+        this.read = read;
+        this.bookID = crypto.randomUUID();
+    }
+
+    info() {
+        return `Title: ${this.title} | Author: ${this.author} | Pages: ${this.pages} | Read before? ${this.read}`;
+    }
+
 }
 
-Book.prototype.info = function () {
-    return `Title: ${this.title} | Author: ${this.author} | Pages: ${this.pages} | Read before? ${this.read}`;
-};
+
+
 
 function createBookThenAdd(title, author, pages, read) {
     /*
