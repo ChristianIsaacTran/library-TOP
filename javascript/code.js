@@ -228,4 +228,40 @@ inputAuthor.addEventListener("input", () => {
     inputAuthor.reportValidity();
 });
 
+const inputPages = document.querySelector("#num-pages");
 
+inputPages.addEventListener("input", () => {
+
+    if(inputPages.value <= 0) {
+        inputPages.setCustomValidity("Cannot have negative or zero pages");
+    } else {
+        inputPages.setCustomValidity("");
+    }
+
+    inputPages.reportValidity();
+});
+
+/*
+    note about constraint API:
+
+    Used for controlling validity and modifying validity messages/states in 
+    javascript. The main functions used are:
+
+    .setCustomValidity() : Flags the html element as invalid with the custom error message,
+    but doesn't display the error message by default. Will only display error message on normal 
+    browser behaving events (like upon unsuccessful submission). Also needs to 
+    be toggled off to get rid of validity state or else the form will be stuck in 
+    an invalid state.
+
+    .checkValidity() : Checks the validity state on a html element. This only 
+    returns true or false depending on the validity. 
+
+    .reportValidity() : checks validity state and returns true or false 
+    depending on if the input is valid or not. Also displays the 
+    browser's error message/tooltip.
+
+    So in summary, .setCustomValidity is used to flag things to be invalid and to 
+    also display a custom error message. In order to unflag it from being invalid, 
+    we can use .setCustomValidity but with an empty string. Also, in order to manually 
+    show the tooltip, I have to use the .reportValidity flag.
+*/
