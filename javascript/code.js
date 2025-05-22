@@ -197,3 +197,35 @@ function changeArrReadStatus(givenID) {
 
     return "";
 }
+
+
+// Adding form validation to the HTML form modal
+const inputTitle = document.querySelector("#title");
+
+inputTitle.addEventListener("input", (event) => {
+    const onlyWhiteSpace = /^\s*$/;
+
+    if(inputTitle.value.length === 0 || onlyWhiteSpace.test(inputTitle.value)) {
+        inputTitle.setCustomValidity("Cannot have empty or only whitespace string");
+    } else {
+        inputTitle.setCustomValidity("");
+    }
+
+    inputTitle.reportValidity();
+});
+
+const inputAuthor = document.querySelector("#author");
+
+inputAuthor.addEventListener("input", () => {
+    const onlyWhiteSpace = /^\s*$/;
+
+    if(inputAuthor.value.length === 0 || onlyWhiteSpace.test(inputAuthor.value)) {
+        inputAuthor.setCustomValidity("Cannot have empty or only whitespace string");
+    } else {
+        inputAuthor.setCustomValidity("");
+    }
+
+    inputAuthor.reportValidity();
+});
+
+
